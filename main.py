@@ -33,7 +33,6 @@ def parse_products(file):
     american_words, british_words = get_word_lists()
     products = get_products(file=file)
 
-    product_categories = dict()
     for product in products:
         id = product.get('id')
         name = product.get('name')
@@ -53,10 +52,7 @@ def parse_products(file):
 
         category = categorize_product(american_word_count, british_word_count)
 
-        product_categories[id] = category
-
-    print(product_categories)
-    return product_categories
+        print('Product ID: {} -> {}'.format(id, category))
 
 
 def categorize_product(american_word_count, british_word_count):
