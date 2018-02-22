@@ -1,6 +1,6 @@
 .PHONY: all test
 
-all: clean venv install
+all: install
 
 clean:
 	rm -rf venv
@@ -8,11 +8,11 @@ clean:
 develop: install
 	venv/bin/pip install -r requirements.txt
 
-install:
+install: venv
 	venv/bin/pip install -e .
 
 test:
 	./venv/bin/nosetests
 
-venv:
+venv: clean
 	virtualenv venv -p $(shell which python3)
