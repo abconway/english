@@ -1,4 +1,4 @@
-.PHONY: all
+.PHONY: all test
 
 all: clean venv install
 
@@ -10,6 +10,9 @@ develop: install
 
 install:
 	venv/bin/pip install -e .
+
+test:
+	./venv/bin/nosetests
 
 venv:
 	virtualenv venv -p $(shell which python3)
